@@ -66,7 +66,7 @@ export function AuthenticatorCreateDialog(props: Props) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className='md:pl-3'>
+        <Button className='md:pl-3' title='Create new authenticator'>
           <PlusIcon className='w-6 h-6 mr-0 md:mr-2' />
           <span className='hidden md:inline'>Create</span>
         </Button>
@@ -105,7 +105,7 @@ export function AuthenticatorCreateDialog(props: Props) {
                 </FormItem>
               )}
             />
-            <DialogFooter className='mt-4'>
+            <DialogFooter className='mt-4 gap-4'>
               <DialogClose asChild>
                 <Button variant={'secondary'}>Cancel</Button>
               </DialogClose>

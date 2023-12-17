@@ -5,7 +5,12 @@ import { useAuthenticators } from '@/hooks/useAuthenticators';
 import { cn } from '@/lib/utils';
 
 export default function Content() {
-  const { data: authenticators, refetch, isLoading } = useAuthenticators();
+  const {
+    data: authenticators,
+    refetch,
+    isLoading,
+    isFetching,
+  } = useAuthenticators();
 
   return (
     <div className='p-4'>
@@ -15,7 +20,7 @@ export default function Content() {
           authenticators.length > 0 && 'pb-0',
         )}
       >
-        <Header refetch={refetch} />
+        <Header refetch={refetch} isFetching={isFetching} />
         <hr />
         {isLoading && <Loading />}
         {!isLoading && (

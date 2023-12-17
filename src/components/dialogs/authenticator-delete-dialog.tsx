@@ -40,9 +40,9 @@ export function AuthenticatorDeleteDialog(props: Props) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className='pl-3' variant={'destructive'}>
-          <Trash className='w-4 h-4 mr-2' />
-          Delete
+        <Button className='lg:pl-3' variant={'destructive'} title='Delete'>
+          <Trash className='w-4 h-4 lg:mr-2' />
+          <span className='hidden lg:inline'>Delete</span>
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -56,7 +56,7 @@ export function AuthenticatorDeleteDialog(props: Props) {
             ?
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter className='mt-4'>
+        <DialogFooter className='mt-4 gap-4'>
           <DialogClose asChild>
             <Button variant={'secondary'}>Cancel</Button>
           </DialogClose>

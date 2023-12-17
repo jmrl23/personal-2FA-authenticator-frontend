@@ -71,9 +71,9 @@ export function AuthenticatorUpdateDialog(props: Props) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button className='pl-3'>
-          <Pen className='w-4 h-4 mr-2' />
-          Update
+        <Button className='lg:pl-3' title='Update'>
+          <Pen className='w-4 h-4 lg:mr-2' />
+          <span className='hidden lg:inline'>Update</span>
         </Button>
       </DialogTrigger>
       <DialogContent>
@@ -110,7 +110,7 @@ export function AuthenticatorUpdateDialog(props: Props) {
                 </FormItem>
               )}
             />
-            <DialogFooter className='mt-4'>
+            <DialogFooter className='mt-4 gap-4'>
               <DialogClose asChild>
                 <Button variant={'secondary'}>Cancel</Button>
               </DialogClose>

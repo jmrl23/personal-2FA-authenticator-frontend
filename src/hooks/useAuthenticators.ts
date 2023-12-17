@@ -5,7 +5,7 @@ import { useContext } from 'react';
 
 export const useAuthenticators = function useAuthenticators() {
   const authorization = useContext(AuthorizationContext);
-  const { data, isLoading, refetch } = useQuery<
+  const { data, isLoading, refetch, isFetching } = useQuery<
     | {
         authenticators: Authenticator[];
       }
@@ -29,5 +29,6 @@ export const useAuthenticators = function useAuthenticators() {
     data: authenticators,
     isLoading,
     refetch,
+    isFetching,
   };
 };
