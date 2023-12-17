@@ -1,10 +1,11 @@
-import { useAuthenticators } from '@/hooks/useAuthenticators';
 import { Header } from '@/components/header';
+import { Loading } from '@/components/loading';
 import { Authenticators } from '@/components/authenticators';
-import { cn } from './lib/utils';
+import { useAuthenticators } from '@/hooks/useAuthenticators';
+import { cn } from '@/lib/utils';
 
 export default function Content() {
-  const { data: authenticators, refetch } = useAuthenticators();
+  const { data: authenticators, refetch, isLoading } = useAuthenticators();
 
   return (
     <div className='p-4'>
@@ -14,9 +15,12 @@ export default function Content() {
           authenticators.length > 0 && 'pb-0',
         )}
       >
-        <Header refresh={refetch} />
+        <Header refetch={refetch} />
         <hr />
-        <Authenticators authenticators={authenticators} />
+        {isLoading && <Loading />}
+        {!isLoading && (
+          <Authenticators authenticators={authenticators} refetch={refetch} />
+        )}
       </div>
     </div>
   );

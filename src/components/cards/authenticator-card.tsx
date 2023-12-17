@@ -1,4 +1,4 @@
-import { Check, Copy, Pen, Trash } from 'lucide-react';
+import { Check, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -7,8 +7,10 @@ import {
   CardDescription,
 } from '@/components/ui/card';
 import { useState } from 'react';
+import { AuthenticatorUpdateDialog } from '@/components/dialogs/authenticator-update-dialog';
+import { AuthenticatorDeleteDialog } from '@/components/dialogs/authenticator-delete-dialog';
 
-export function AuthenticatorCard({ authenticator }: Props) {
+export function AuthenticatorCard({ authenticator, refetch }: Props) {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   return (
@@ -38,14 +40,14 @@ export function AuthenticatorCard({ authenticator }: Props) {
               )}
               <span>{authenticator.code}</span>
             </Button>
-            <Button className='pl-3'>
-              <Pen className='w-4 h-4 mr-2' />
-              Edit
-            </Button>
-            <Button className='pl-3' variant={'destructive'}>
-              <Trash className='w-4 h-4 mr-2' />
-              Edit
-            </Button>
+            <AuthenticatorUpdateDialog
+              authenticator={authenticator}
+              refetch={refetch}
+            />
+            <AuthenticatorDeleteDialog
+              authenticator={authenticator}
+              refetch={refetch}
+            />
           </div>
         </CardDescription>
       </CardHeader>
@@ -55,4 +57,5 @@ export function AuthenticatorCard({ authenticator }: Props) {
 
 export interface Props {
   authenticator: Authenticator;
+  refetch: () => void;
 }

@@ -14,7 +14,7 @@ export const useAuthenticators = function useAuthenticators() {
     queryKey: ['authenticators', 'list'],
     queryFn: () =>
       request<{ authenticators: Authenticator[] }>(
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/read`, {
+        fetch(`/api/read`, {
           headers: {
             Authorization: `Bearer ${authorization}`,
           },

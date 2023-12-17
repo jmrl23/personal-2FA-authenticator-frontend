@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/card';
 import { AuthenticatorCard } from './cards/authenticator-card';
 
-export function Authenticators({ authenticators }: Props) {
+export function Authenticators({ authenticators, refetch }: Props) {
   return (
     <div className='mt-4'>
       {authenticators.length < 1 && (
@@ -22,7 +22,7 @@ export function Authenticators({ authenticators }: Props) {
         </Card>
       )}
       {authenticators.map((authenticator) => (
-        <AuthenticatorCard authenticator={authenticator} />
+        <AuthenticatorCard authenticator={authenticator} refetch={refetch} />
       ))}
     </div>
   );
@@ -30,4 +30,5 @@ export function Authenticators({ authenticators }: Props) {
 
 export interface Props {
   authenticators: Authenticator[];
+  refetch: () => void;
 }
